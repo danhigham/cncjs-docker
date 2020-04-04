@@ -1,3 +1,3 @@
 FROM harbor.high.am/cncjs/cncjs
 
-RUN apt-get install socat
+RUN apt-get install -y socat
