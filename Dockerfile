@@ -3,7 +3,10 @@ FROM node:lts-alpine
 RUN apk add --no-cache \
     python python-dev \
     socat \
+    supervisor \
     make gcc g++ python linux-headers udev
+
+RUN mkdir /etc/supervisor.d
 
 USER node
 
