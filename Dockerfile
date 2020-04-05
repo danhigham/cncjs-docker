@@ -1,4 +1,18 @@
-FROM harbor.high.am/cncjs/cncjs
+FROM node:lts-alpine
 
-RUN apt-get update
-RUN apt-get install -y socat
+RUN apk add --no-cache \
+    python python-dev \
+    socat \
+    make gcc g++ python linux-headers udev
+
+USER node
+
+RUN mkdir /home/node/.npm-global
+ENV PATH=/home/node/.npm-global/bin:$PATH
+ENV NPM_CONFIG_PREFIX=/home/node/.npm-global
+
+RUN npm install npm@latest -g
+RUN npm install -g cncjs
+
+EXPOSE 8000
+CMD ["cncjs"]
