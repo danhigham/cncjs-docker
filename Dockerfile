@@ -7,6 +7,8 @@ RUN apk add --no-cache \
     make gcc g++ python linux-headers udev
 
 RUN mkdir /etc/supervisor.d
+RUN mkdir /root/dev
+RUN touch /root/dev/ttyV0
 
 USER node
 
